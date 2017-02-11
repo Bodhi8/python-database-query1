@@ -1,0 +1,19 @@
+#import required packages
+from sqlalchemy import create_engine
+
+import pandas as pd
+
+#Create Engine
+engine = create_engine("sqlite:///databasename.sqlite')
+
+#Connect to database
+con = engine.connect()
+
+#Query database using SQL query
+rs = con.execute("Select * FROM Orders")
+
+#Turn results into dataframe, fetches all rows
+df = pd.DataFrame(rs.fetchall())
+
+#Close connection
+con.close()
